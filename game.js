@@ -9,14 +9,13 @@ $('.btn').click(function(){
     userClickedPattern.push(userChosenColour);
     console.log(userClickedPattern);
     playSound(userChosenColour);
-
+    animatePress(userChosenColour);
   });
 
 function playSound(name){
-  var audio = new Audio ('sounds/'+name+'.mp3');
+  var audio = new Audio('sounds/'+ name +'.mp3');
   audio.play();
 }
-
 
 function nextSequence(){
   var randomNumber = Math.floor(Math.random() * 4 );
@@ -26,7 +25,14 @@ function nextSequence(){
   var idFinder = $("#"+randomChosenColour)
   idFinder.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 
-
   playSound(randomChosenColour);
 
-};
+}
+
+function animatePress(currentColour) {
+    $("#" + currentColour).addClass("pressed");
+
+    setTimeout(function () {
+  $("#" + currentColour).removeClass("pressed");
+  }, 100);
+  }
