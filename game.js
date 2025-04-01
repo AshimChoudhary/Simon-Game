@@ -7,8 +7,15 @@ var userClickedPattern = [];
 $('.btn').click(function(){
     var userChosenColour = $(this).attr("id");;
     userClickedPattern.push(userChosenColour);
-      console.log(userClickedPattern);
+    console.log(userClickedPattern);
+    playSound(userChosenColour);
+
   });
+
+function playSound(name){
+  var audio = new Audio ('sounds/'+name+'.mp3');
+  audio.play();
+}
 
 
 function nextSequence(){
@@ -20,7 +27,6 @@ function nextSequence(){
   idFinder.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 
 
-  var audio = new Audio('sounds/' + randomChosenColour +'.mp3');
-  audio.play();
+  playSound(randomChosenColour);
 
 };
